@@ -23,6 +23,8 @@
 * Visualisations and charts
 * Templating
 * Hosting
+* Eslint - linting
+* Postman - API testing
 
 ### Run the app
 1. #### Frontend
