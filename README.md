@@ -17,9 +17,9 @@
 * Insights and graphs based on income and expenses
 
 ### Tech Used
-* Nodejs - Creating Rest API's and processing data
-* Mongodb and Mongo Atlas - Data storage
-* Vuejs - Frontend design and computations
+* <ins>Nodejs</ins> - Creating Rest API's and processing data
+* <ins>Mongodb and Mongo Atlas</ins> - Data storage
+* <ins>Vuejs</ins> - Frontend design and computations
 * Visualisations and charts
 * Templating
 * Hosting
@@ -45,12 +45,16 @@
   npm init
   npm i express body-parser path concurrently mongoose
   npm i nodemon --save-dev
+  npm i eslint -D
+  # add eslint to package json
+  npm run lint -- --init
   ```
 
+* Create a project and a cluster on Mongo Atlas and add users
 
 * Run
   ```bash
   cd backend
-  node index.js
+  npm start
   ```
     
