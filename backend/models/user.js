@@ -6,12 +6,14 @@ const userSchema = mongoose.Schema({
     type: String, unique: true, required: true, minlength: 3, maxlength: 50,
   },
   password: { type: String, required: true, minlength: 3 },
-  accounts: [
-    { type: mongoose.Schema.Types.ObjectId, ref: 'Account' },
-  ],
+  accounts: [{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Account',
+  }],
 }, {
   timestamps: true,
 });
+// adding {timestamps: true} saves createdAt and updatedAt fields
 
 const User = mongoose.model('User', userSchema);
 
