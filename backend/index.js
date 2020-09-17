@@ -1,5 +1,6 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const logger = require('morgan');
 const { mongoURI } = require('./config/config.js');
 
 const users = require('./routes/users.js');
@@ -7,6 +8,7 @@ const accounts = require('./routes/accounts');
 
 const app = express();
 
+app.use(logger('dev'));
 app.use(express.json());
 
 // connecting to mongodb

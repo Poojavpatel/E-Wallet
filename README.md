@@ -25,6 +25,7 @@
 * Hosting
 * Eslint - linting
 * Postman - API testing
+* Morgan - logging
 
 ### Run the app
 1. #### Frontend
@@ -50,6 +51,7 @@
   npm i eslint -D
   # add eslint to package json
   npm run lint -- --init
+  npm i morgan
   ```
 
 * Create a project and a cluster on Mongo Atlas and add users
