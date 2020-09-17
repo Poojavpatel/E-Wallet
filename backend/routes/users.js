@@ -27,6 +27,7 @@ router.post('/', async (req, res) => {
 /* Example of req body
 {
   "name":"abc",
+  "userName:"abc",
   "email":"abc@gmail.com",
   "password":"abc"
 }

@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 
 const userSchema = mongoose.Schema({
   name: { type: String, maxlength: 50 },
+  userName: { type: String, unique: true, required: true },
   email: {
     type: String, unique: true, required: true, minlength: 3, maxlength: 50,
   },
@@ -13,7 +14,6 @@ const userSchema = mongoose.Schema({
 }, {
   timestamps: true,
 });
-// adding {timestamps: true} saves createdAt and updatedAt fields
 
 const User = mongoose.model('User', userSchema);
 
