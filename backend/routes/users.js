@@ -6,13 +6,16 @@ const router = express.Router();
 // get all users (http://localhost:5000/api/users)
 router.get('/', UsersController.getUsers);
 
+// get user details (http://localhost:5000/api/users/5f5e1949974a566e941ec8a9)
+router.get('/:userId', UsersController.getUserDetails);
+
 // create a user (http://localhost:5000/api/users)
 router.post('/', UsersController.createUser);
 
 /* Example of req body
 {
   "name":"abc",
-  "userName:"abc",
+  "userName":"abc",
   "email":"abc@gmail.com",
   "password":"abc"
 }

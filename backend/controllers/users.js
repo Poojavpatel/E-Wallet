@@ -1,20 +1,35 @@
 /* eslint-disable consistent-return */
 const _ = require('lodash');
-const { User } = require('../models/user');
+const { User, validateUser } = require('../models/user');
 const { Account } = require('../models/account');
 
 module.exports = {
   getUsers: async (req, res) => {
-    const users = await User.find().sort('updatedAt');
+    const users = await User.find().sort('createdAt');
     res.send(users);
   },
+  getUserDetails: async (req, res) => {
+    if (!req.params.userId) {
+      throw new Error('User Id is required');
+    }
+    const { userId } = req.params;
+    const user = await User.findById(userId);
+    if (!user) {
+      throw new Error('User not found');
+    }
+    res.status(200).json(user);
+  },
   createUser: async (req, res) => {
+    const { error } = validateUser(req.body);
+    if (error) {
+      throw new Error(error.details);
+    }
     let user = await User.findOne({ email: req.body.email });
     if (user) return res.status(400).send('User already registered');
 
-    user = new User(_.pick(req.body, ['name', 'email', 'password']));
+    user = new User(_.pick(req.body, ['name', 'userName', 'email', 'password']));
     await user.save();
-    res.send(_.pick(user, ['_id', 'name', 'email', 'createdAt', 'updatedAt']));
+    res.send(_.pick(user, ['_id', 'name', 'userName', 'email', 'createdAt', 'updatedAt']));
   },
   addUserAccount: async (req, res) => {
     const { userId } = req.params;
