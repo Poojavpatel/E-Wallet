@@ -5,6 +5,7 @@ const { mongoURI } = require('./config/config.js');
 
 const users = require('./routes/users.js');
 const accounts = require('./routes/accounts');
+const transactions = require('./routes/transaction');
 
 const app = express();
 
@@ -28,6 +29,7 @@ router.get('/', (req, res) => {
 app.use('/api', router);
 app.use('/api/users', users);
 app.use('/api/accounts', accounts);
+app.use('/api/transactions', transactions);
 
 const port = process.env.PORT || 5000;
 // eslint-disable-next-line no-console

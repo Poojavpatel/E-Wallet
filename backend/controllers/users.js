@@ -1,7 +1,8 @@
 /* eslint-disable consistent-return */
 const _ = require('lodash');
+const mongoose = require('mongoose');
 const { User, validateUser } = require('../models/user');
-const { Account } = require('../models/account');
+const { Account, validateAccount } = require('../models/account');
 
 module.exports = {
   getUsers: async (req, res) => {
@@ -11,6 +12,9 @@ module.exports = {
   getUserDetails: async (req, res) => {
     if (!req.params.userId) {
       throw new Error('User Id is required');
+    }
+    if (!mongoose.Types.ObjectId.isValid(req.params.userId)) {
+      throw new Error('User Id is invalid');
     }
     const { userId } = req.params;
     const user = await User.findById(userId);
@@ -34,6 +38,10 @@ module.exports = {
   addUserAccount: async (req, res) => {
     const { userId } = req.params;
     const user = await User.findById(userId);
+    const { error } = validateAccount(req.body);
+    if (error) {
+      throw new Error(error.details);
+    }
     const newAccount = new Account(_.pick(req.body, ['name', 'type', 'balance']));
     newAccount.balance = req.body.balance || 0;
     newAccount.userId = userId;
