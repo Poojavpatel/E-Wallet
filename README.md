@@ -35,8 +35,8 @@
   vue init webpack frontend
   cd frontend
   npm install
-  npm i axios
-  npm i vue-router vue-resource --save
+  npm i axios moment querystring vee-validate
+  vue add vuetify
   ```
 
 * Run
