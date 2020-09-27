@@ -1,6 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const logger = require('morgan');
+const cors = require('cors');
 const { mongoURI } = require('./config/config.js');
 
 const users = require('./routes/users.js');
@@ -10,6 +11,7 @@ const transactions = require('./routes/transaction');
 const app = express();
 
 app.use(logger('dev'));
+app.use(cors());
 app.use(express.json());
 
 // connecting to mongodb

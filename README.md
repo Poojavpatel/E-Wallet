@@ -32,13 +32,17 @@
 1. #### Frontend
 * Create
   ```bash
-  vue create frontend
+  vue init webpack frontend
+  cd frontend
+  npm install
+  npm i axios
+  npm i vue-router vue-resource --save
   ```
 
 * Run
   ```bash
   cd frontend
-  npm run serve
+  npm run dev
   # App running at http://localhost:8080/
   ```
 
@@ -47,13 +51,14 @@
   ```bash
   cd backend
   npm init
-  npm i express body-parser path concurrently mongoose
+  npm i express body-parser path concurrently mongoose cors
   npm i nodemon --save-dev
   npm i eslint -D
   # add eslint to package json
   npm run lint -- --init
   npm i morgan
   npm i joi
+  npm start
   ```
 
 * Create a project and a cluster on Mongo Atlas and add users
@@ -61,6 +66,6 @@
 * Run
   ```bash
   cd backend
-  npm start
+  nodemon index.js
   ```
     
